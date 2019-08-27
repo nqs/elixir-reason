@@ -1,9 +1,9 @@
-defmodule Api.Mixfile do
+defmodule BusiApi.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :api,
+      app: :busi_api,
       version: "0.0.1",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env),
@@ -19,7 +19,7 @@ defmodule Api.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Api.Application, []},
+      mod: {BusiApi.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -39,9 +39,11 @@ defmodule Api.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:absinthe_ecto, "~> 0.1.0"},
-      {:absinthe_plug, "~> 1.3.0"},
-
+      {:plug_cowboy, "~> 1.0"},
+      {:guardian, "~> 1.0"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 1.0"},
+      {:dotenv, "~> 3.0.0"}
     ]
   end
 
@@ -55,7 +57,7 @@ defmodule Api.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end

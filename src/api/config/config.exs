@@ -6,15 +6,15 @@
 use Mix.Config
 
 # General application configuration
-config :api,
-  ecto_repos: [Api.Repo]
+config :busi_api,
+  ecto_repos: [BusiApi.Repo]
 
 # Configures the endpoint
-config :api, ApiWeb.Endpoint,
+config :busi_api, BusiApiWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "05o5n1r6ofU3NeCDyUFfv83QTOOpeelkiznpDCY2YMCKLpHfskmJTRgViNSMoY1W",
-  render_errors: [view: ApiWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: Api.PubSub,
+  secret_key_base: "sA1Sy9V6HwUzoNl428zanc7A0fYY7rhHHDhV+w5Qm8ubqFoRJBDzbrZGrHupm2SA",
+  render_errors: [view: BusiApiWeb.ErrorView, accepts: ~w(json)],
+  pubsub: [name: BusiApi.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
@@ -25,3 +25,8 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+
+# Guardian config
+config :busi_api, BusiApiWeb.Auth.Guardian,
+       issuer: "busi_api",
+       secret_key: "a4jXyJO/3fxlxJIG8ZbareDdjp0ftbluCyAVlnTzvnCzrVDG8bE0AKDsgagfy5Jc"

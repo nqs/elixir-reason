@@ -1,4 +1,4 @@
-# Api
+# BusiApi
 
 To start your Phoenix server:
 
